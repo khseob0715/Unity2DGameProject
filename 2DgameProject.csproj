@@ -306,6 +306,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\01 Script\CameraManager.cs" />
     <Compile Include="Assets\01 Script\MovingObject.cs" />
   </ItemGroup>
   <ItemGroup>
