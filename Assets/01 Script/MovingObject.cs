@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
+    private BoxCollider2D boxCollider;
+    public LayerMask layerMask;  // 통과 불가능한 레이어 설정, 레이캐스트 
 
     public float speed;        // 캐릭터의 속도 담당
 
@@ -25,6 +27,7 @@ public class MovingObject : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     IEnumerator MoveCoroutine()
@@ -45,17 +48,33 @@ public class MovingObject : MonoBehaviour
             vector.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), transform.position.z);
             // z 축은 변하지 않는 값
 
-            if(vector.x != 0)
+            if (vector.x != 0)
             {
                 vector.y = 0;
             }
 
-            if(vector.y != 0)
+            if (vector.y != 0)
             {
                 vector.x = 0;
             }
             animator.SetFloat("DirX", vector.x); // vector.x 의 값을 DirX로 전달.
             animator.SetFloat("DirY", vector.y);
+
+            RaycastHit2D hit;
+            // A지점에서 B 지점까지 레이저를 쐈을 때, B지점에 도착하였을 경우 hit = null / 도착하지 못하고 방해물에 도착하였을 경우 hit = 방해물 오브젝트  
+            Vector2 Start = transform.position;  // A 지점  // 캐릭터의 현재 위치 값 
+            Vector2 End = Start + new Vector2(vector.x * speed * walkCount, vector.y * speed * walkCount);    // B 지점  // 캐릭터가 이동하고자 하는 위치 값
+
+            boxCollider.enabled = false;
+            hit = Physics2D.Linecast(Start, End, layerMask);
+            boxCollider.enabled = true;
+
+
+            if (hit.transform != null)
+            {
+                break;
+            }
+
             animator.SetBool("Walking", true);
 
             while (currentWalkCount < walkCount)
