@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour
 {
+    static public MovingObject instance;
+    
+
+    public string currentMapName; //  trasnferMap 스크립트에 있는 transferMapName의 값을 저장 시킬 예정.
+
     private BoxCollider2D boxCollider;
     public LayerMask layerMask;  // 통과 불가능한 레이어 설정, 레이캐스트 
 
@@ -26,8 +31,18 @@ public class MovingObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        animator = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        if(instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject); // 파괴 시키지 말라는 뜻. 
+            animator = GetComponent<Animator>();
+            boxCollider = GetComponent<BoxCollider2D>();
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
     }
 
     IEnumerator MoveCoroutine()

@@ -308,6 +308,8 @@
   <ItemGroup>
     <Compile Include="Assets\01 Script\CameraManager.cs" />
     <Compile Include="Assets\01 Script\MovingObject.cs" />
+    <Compile Include="Assets\01 Script\StartPoint.cs" />
+    <Compile Include="Assets\01 Script\TransferMap.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GPUInstancing.cs" />
@@ -330,6 +332,7 @@
   <ItemGroup>
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\testA.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\testB.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\License.txt" />
     <None Include="Assets\Tiled2Unity\Materials\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Meshes\_ReadMe.txt" />
