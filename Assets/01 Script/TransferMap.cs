@@ -7,12 +7,17 @@ public class TransferMap : MonoBehaviour {
 
     public string trasferMapName; // 이동할 맵의 이름
 
+    public BoxCollider2D targetBound;
+
+    //private CameraManager theCamera;
     private MovingObject thePlayer;
     
     // Use this for initialization
 	void Start () {
         thePlayer = FindObjectOfType<MovingObject>(); // 다수의 객체. getComponent랑 쓰임새는 비슷하지만 범위의 차이. 
-	}
+        //theCamera = FindObjectOfType<CameraManager>();
+
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,7 +26,11 @@ public class TransferMap : MonoBehaviour {
         if(collision.gameObject.name == "Player")
         {
             thePlayer.currentMapName = trasferMapName;
+
+            //theCamera.SetBound(targetBound);
+
             SceneManager.LoadScene(trasferMapName);
+
         }
     }
 }

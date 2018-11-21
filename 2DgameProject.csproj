@@ -306,6 +306,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\01 Script\AudioManager.cs" />
+    <Compile Include="Assets\01 Script\Bound.cs" />
     <Compile Include="Assets\01 Script\CameraManager.cs" />
     <Compile Include="Assets\01 Script\MovingObject.cs" />
     <Compile Include="Assets\01 Script\StartPoint.cs" />

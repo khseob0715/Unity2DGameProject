@@ -5,12 +5,24 @@ using UnityEngine;
 public class MovingObject : MonoBehaviour
 {
     static public MovingObject instance;
-    
+
 
     public string currentMapName; //  trasnferMap 스크립트에 있는 transferMapName의 값을 저장 시킬 예정.
 
     private BoxCollider2D boxCollider;
     public LayerMask layerMask;  // 통과 불가능한 레이어 설정, 레이캐스트 
+
+    //public AudioClip walkSound_1; // 사운드 파일
+    //public AudioClip walkSound_2;
+
+    //private AudioSource audioSource; // 사운드 플레이어 
+
+    public string walkSound_1;
+    public string walkSound_2;
+    public string walkSound_3;
+    public string walkSound_4;
+
+    private AudioManager theAudio;
 
     public float speed;        // 캐릭터의 속도 담당
 
@@ -31,18 +43,20 @@ public class MovingObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             DontDestroyOnLoad(this.gameObject); // 파괴 시키지 말라는 뜻. 
             animator = GetComponent<Animator>();
+            //audioSource = GetComponent<AudioSource>();
             boxCollider = GetComponent<BoxCollider2D>();
+            theAudio = FindObjectOfType<AudioManager>();
             instance = this;
         }
         else
         {
             Destroy(this.gameObject);
         }
-        
+
     }
 
     IEnumerator MoveCoroutine()
@@ -92,6 +106,24 @@ public class MovingObject : MonoBehaviour
 
             animator.SetBool("Walking", true);
 
+            int temp = Random.Range(1, 4);
+            switch (temp)
+            {
+                case 1:
+                    theAudio.Play(walkSound_1);
+                    break;
+                case 2:
+                    theAudio.Play(walkSound_2);
+                    break;
+                case 3:
+                    theAudio.Play(walkSound_3);
+                    break;
+                case 4:
+                    theAudio.Play(walkSound_4);
+                    break;
+            }
+
+
             while (currentWalkCount < walkCount)
             {
                 if (vector.x != 0)
@@ -110,6 +142,8 @@ public class MovingObject : MonoBehaviour
                 }
                 currentWalkCount++;
                 yield return new WaitForSeconds(0.01f);
+
+
             }
             currentWalkCount = 0;
 
