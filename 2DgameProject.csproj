@@ -307,10 +307,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\01 Script\AudioManager.cs" />
+    <Compile Include="Assets\01 Script\BGMManager.cs" />
     <Compile Include="Assets\01 Script\Bound.cs" />
     <Compile Include="Assets\01 Script\CameraManager.cs" />
     <Compile Include="Assets\01 Script\MovingObject.cs" />
     <Compile Include="Assets\01 Script\StartPoint.cs" />
+    <Compile Include="Assets\01 Script\Test1.cs" />
     <Compile Include="Assets\01 Script\TransferMap.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\GameObjectExtensions.cs" />
