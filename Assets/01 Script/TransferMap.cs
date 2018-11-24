@@ -10,11 +10,11 @@ public class TransferMap : MonoBehaviour {
     public BoxCollider2D targetBound;
 
     //private CameraManager theCamera;
-    private MovingObject thePlayer;
+    private PlayerManager thePlayer;
     
     // Use this for initialization
 	void Start () {
-        thePlayer = FindObjectOfType<MovingObject>(); // 다수의 객체. getComponent랑 쓰임새는 비슷하지만 범위의 차이. 
+        thePlayer = FindObjectOfType<PlayerManager>(); // 다수의 객체. getComponent랑 쓰임새는 비슷하지만 범위의 차이. 
         //theCamera = FindObjectOfType<CameraManager>();
 
     }
