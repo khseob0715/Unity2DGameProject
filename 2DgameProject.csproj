@@ -311,7 +311,11 @@
     <Compile Include="Assets\01 Script\Bound.cs" />
     <Compile Include="Assets\01 Script\CameraManager.cs" />
     <Compile Include="Assets\01 Script\MovingObject.cs" />
+    <Compile Include="Assets\01 Script\NPCManager.cs" />
+    <Compile Include="Assets\01 Script\OrderManager.cs" />
+    <Compile Include="Assets\01 Script\PlayerManager.cs" />
     <Compile Include="Assets\01 Script\StartPoint.cs" />
+    <Compile Include="Assets\01 Script\test_Order.cs" />
     <Compile Include="Assets\01 Script\Test1.cs" />
     <Compile Include="Assets\01 Script\TransferMap.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\CircleObject.cs" />

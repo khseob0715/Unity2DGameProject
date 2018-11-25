@@ -22,22 +22,17 @@ public class NPCManager : MovingObject {
 
     // Use this for initialization
     void Start() {
-        StartCoroutine(MoveCoroutine());
+        queue = new Queue<string>();
     }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
-
+    
     public void SetMove()
     {
-
+        StartCoroutine(MoveCoroutine());
     }
 
     public void SetNotMove()
     {
-
+        StopAllCoroutines();
     }
 
     IEnumerator MoveCoroutine()
@@ -64,7 +59,7 @@ public class NPCManager : MovingObject {
                         break;
                 }
 
-                yield return new WaitUntil(()=>npcCanMove);
+                yield return new WaitUntil(()=> queue.Count < 2);
                 // npcCanMove가 true가 될 때까지 대기. 
                 base.Move(npc.direction[i], npc.frequncy);
 

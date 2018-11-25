@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,22 +29,26 @@ public class PlayerManager : MovingObject {
 
     private bool canMove = true;  // 코루틴이 계속 호출 되는 것 방지 
 
-    // Use this for initialization
-    void Start()
+    private void Awake()
     {
         if (instance == null)
         {
             DontDestroyOnLoad(this.gameObject); // 파괴 시키지 말라는 뜻. 
-            animator = GetComponent<Animator>();
-            //audioSource = GetComponent<AudioSource>();
-            boxCollider = GetComponent<BoxCollider2D>();
-            theAudio = FindObjectOfType<AudioManager>();
             instance = this;
         }
         else
         {
             Destroy(this.gameObject);
         }
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        queue = new Queue<string>();
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        theAudio = FindObjectOfType<AudioManager>();
 
     }
 
